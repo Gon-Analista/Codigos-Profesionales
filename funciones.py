@@ -43,38 +43,33 @@ def validar_opcion1():
             print("\nError: Ingrese su edad en numeros")
     return nombres,edades,nombre
 
-def validar_opcion2(nombre):
-    if nombre != None:
-        buscar = str(input("\nIngrese el NIF de la persona que desea buscar:\t"))
-        while valido:
-            try:
-                if buscar in nif_not_union:
-                    index = nif_not_union.index(buscar)
-                    print("\nNIF:",nif_not_union[index])
-                    print("\nNombre:",nombres[index])
-                    print("\nEdad:",edades[index])
-                    print("\nEsta persona no pertenece a la union")
-                elif buscar in nif_union:
-                    print("\nNIF:",nif_not_union[index])
-                    print("\nNombre:",nombres[index])
-                    print("\nEdad:",edades[index])
-                    print("\nEsta persona no pertenece a la union")
-                else:
-                    print("\nError: no se encuentra en la lista")
-                break
-            except ValueError:
-                print("\nError: no se encuentra en la lista")
-                break
-    else:
-        print("\nError: No tenemos usuarios registrados, ingrese a la opcion 1")
+def validar_opcion2():
+    buscar = str(input("\nIngrese el NIF de la persona que desea buscar:\t"))
+    return buscar
 
-def validar_opcion3(nombre):
-    if nombre != None:
-        nacimiento = str(input("Ingrese su fecha de nacimiento: "))
-        estado = str(input("Ingrese su estado conyugal: "))
-        nif_union, nif_not_union, pertenece = validar_nif()
-        print(pertenece)
-     
-    
-    else:
-        print("\nError: No tenemos usuarios registrados, ingrese a la opcion 1")
+def buscar_nif(buscar):
+    while valido:
+        try:
+            if buscar in nif_not_union:
+                index = nif_not_union.index(buscar)
+                print("\nNIF:",nif_not_union[index])
+                print("\nNombre:",nombres[index])
+                print("\nEdad:",edades[index])
+                print("\nEsta persona no pertenece a la union")
+            elif buscar in nif_union:
+                print("\nNIF:",nif_not_union[index])
+                print("\nNombre:",nombres[index])
+                print("\nEdad:",edades[index])
+                print("\nEsta persona no pertenece a la union")
+            else:
+                print("\nError: el nif no se encuentra en la lista")
+            break
+        except ValueError:
+            print("\nError: no se encuentra en la lista")
+            break
+
+def validar_opcion3():
+    nacimiento = str(input("\nIngrese su fecha de nacimiento:\t"))
+    estado = str(input("\nIngrese su estado conyugal:\t"))
+    buscar = str(input("\nIngrese su nif:\t"))
+    return nacimiento,estado,buscar
